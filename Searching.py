@@ -20,7 +20,7 @@ class Search(object):
         self.pages = Helper.get_page_count(self.main_url)
         print(self.pages)
         self.all_threads = []
-        for i in range(1, 10):
+        for i in range(1, self.pages+1):
             for v in Helper.get_yearly_threads(self.main_url + "//p{}".format(i)):
                 self.all_threads.append(v)
                 Helper.extract_from_thread_url(self.thread_name,self.all_threads[0])
