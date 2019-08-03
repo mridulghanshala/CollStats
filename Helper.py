@@ -14,7 +14,6 @@ def grabSite(url):
     return "<html></html>"
 
 def subthread_url(url, num):
-	# https://talk.collegeconfidential.com/columbia-school-general-studies/2036962-dual-ba-program-trinity-college-dublin-and-columbia-university-fall-2018.html
 	return url.partition(".html")[0] + "-p{}.html".format(num)
 
 def get_page_count(url):
@@ -44,4 +43,8 @@ def extract_from_thread_url(threadName, url):
     tempCount = get_page_count(url)
     for i in range(1, tempCount + 1):
         res = grabSite(subthread_url(url, i))
+        page = bs4.BeautifulSoup(res.text, 'lxml')
+        for thread in page.select(".Role_RegisteredUser"):
+            comment = thread.select(".userContent")[0]
+            username = str(thread).partition("/profile/")[2].partition('"')[0]
 
