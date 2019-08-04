@@ -84,9 +84,23 @@ def extract_from_thread_url(threadName, url):
                 else:
                     typeVal = "unknown"
                 Searching.DB[threadName][typeVal].append({'urls': [url], 'type': "direct", "comment": str(thread)})
-            # elif ('accepted' in str(comment.getText()).lower().split(" ")[:5] or 'rejected' in str(comment.getText()).lower().split(" ")[:5]):
-            fullComment = get_stats_from_profile(username)
-            print("here")
+            elif ('accepted' in str(comment.getText()).lower().split(" ")[:5] or 'rejected' in str(comment.getText()).lower().split(" ")[:5]):
+                fullComment = get_stats_from_profile(username)
+                temp = fullComment
+                if temp != None:
+                    temp = temp['comment'].getText()
+                    if 'accepted' in str(temp).lower():
+                        typeVal = "accepted"
+                    elif 'rejected' in str(temp).lower() or 'rejection' in str(temp).lower():
+                        typeVal = "rejected"
+                    else:
+                        typeVal = "unknown"
+                    Searching.DB[threadName][typeVal].append({'urls': [url, str(fullComment['url'])], 'type': "profile","comment": str(fullComment['comment'])})
+            rCount += str(comment).lower().count("rejected")
+            aCount += str(comment).lower().count("accepted")
+    x = {"url": url, "rCount": rCount, "aCount": aCount}
+    Searching.ALL.append(x)
+    return x
 
 def is_stats(string):
     if 'gpa' in string.lower() and (string.count(":") > 2 or string.count("-") > 2):
