@@ -23,7 +23,6 @@ class Search(object):
         for i in range(1, 15):
             for v in Helper.get_yearly_threads(self.main_url + "//p{}".format(i)):
                 self.all_threads.append(v)
-                Helper.grabSiteLogin("https://talk.collegeconfidential.com/profile/comments/mgeek23")
                 Helper.extract_from_thread_url(self.thread_name,self.all_threads[0])
        # threads = [threading.Thread(target=Helper.extract_from_thread_url, args=(self.thread, ar,)) for ar in self.all_threads]
 

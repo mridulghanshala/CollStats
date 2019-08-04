@@ -17,27 +17,25 @@ def grabSite(url):
 
 def grabSiteLogin(url):
     try:
-
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
         post_params = {
             "login": str(config.keys['login']),
             "pass": str(config.keys['pass']),
             "source":"database"
         }
-        post2={}
+        SAML={}
         with requests.Session() as s:
             getAuth=s.get(url,headers=headers)
             soup=bs4.BeautifulSoup(getAuth.content,'lxml')
-            dalla = soup.find('input', attrs={'name': 'AuthState'})['value']
-            myurl="https://auth.collegeconfidential.com/module.php/hobsonsregister/login.php?{}".format(dalla)
-            post_params['AuthState']=str(dalla)
-            p = s.post(myurl, data=post_params, headers=headers)
-            bs2 = bs4.BeautifulSoup(p.content,'lxml')
-            dal = bs2.find('input', attrs={'name': 'SAMLResponse'})['value']
-            post2['SAMLResponse']=dal
-            x=s.post("https://talk.collegeconfidential.com/entry/connect/saml", data=post2, headers=headers)
-            g=s.get(url)
-            print("hey")
+            AuthState_dynamic = soup.find('input', attrs={'name': 'AuthState'})['value']
+            myurl="https://auth.collegeconfidential.com/module.php/hobsonsregister/login.php?{}".format(AuthState_dynamic)
+            post_params['AuthState']=str(AuthState_dynamic)
+            post_login_form = s.post(myurl, data=post_params, headers=headers)
+            parse_to_get_saml = bs4.BeautifulSoup(p.content,'lxml')
+            samlcode = parse_to_get_saml.find('input', attrs={'name': 'SAMLResponse'})['value']
+            SAML['SAMLResponse']=samlcode
+            saml_post=s.post("https://talk.collegeconfidential.com/entry/connect/saml", data=SAML, headers=headers)
+            page=s.get(url)
     except Exception as exp:
         print (exp)
         pass
@@ -86,8 +84,9 @@ def extract_from_thread_url(threadName, url):
                 else:
                     typeVal = "unknown"
                 Searching.DB[threadName][typeVal].append({'urls': [url], 'type': "direct", "comment": str(thread)})
-
-
+            # elif ('accepted' in str(comment.getText()).lower().split(" ")[:5] or 'rejected' in str(comment.getText()).lower().split(" ")[:5]):
+            fullComment = get_stats_from_profile(username)
+            print("here")
 
 def is_stats(string):
     if 'gpa' in string.lower() and (string.count(":") > 2 or string.count("-") > 2):
@@ -98,8 +97,33 @@ def get_stats_from_profile(username):
     url="https://talk.collegeconfidential.com/profile/comments/{}".format(username)
     comments = []
     pages = None
-    res = grabSite(url)
-    page = bs4.BeautifulSoup(res.text, 'lxml')
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+        post_params = {
+            "login": str(config.keys['login']),
+            "pass": str(config.keys['pass']),
+            "source":"database"
+        }
+        SAML={}
+        with requests.Session() as s:
+            getAuth=s.get(url,headers=headers)
+            soup=bs4.BeautifulSoup(getAuth.content,'lxml')
+            AuthState_dynamic = soup.find('input', attrs={'name': 'AuthState'})['value']
+            myurl="https://auth.collegeconfidential.com/module.php/hobsonsregister/login.php?{}".format(AuthState_dynamic)
+            post_params['AuthState']=str(AuthState_dynamic)
+            post_login_form = s.post(myurl, data=post_params, headers=headers)
+            parse_to_get_saml = bs4.BeautifulSoup(post_login_form.content,'lxml')
+            samlcode = parse_to_get_saml.find('input', attrs={'name': 'SAMLResponse'})['value']
+            SAML['SAMLResponse']=samlcode
+            saml_post=s.post("https://talk.collegeconfidential.com/entry/connect/saml", data=SAML, headers=headers)
+            all_comments=s.get(url)
+            page = bs4.BeautifulSoup(all_comments.text, 'lxml')
+    except Exception as exp:
+        print (exp)
     if pages == None:
-        results = int(page.find_all('div', attrs={"class": "Count"}))
-        print(results)
+        # results = page.find_all('div', attrs={"class": "Profile-Stats"})
+        for a in page.select('.Profile-Stats a'):
+            if a['href']==("/profile/comments/"+username):
+                nu=a.find('span',attrs={"class":"Count"})
+                pages=int(nu.text)
+                break
