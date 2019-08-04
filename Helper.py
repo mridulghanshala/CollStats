@@ -129,8 +129,7 @@ def get_stats_from_profile(username):
             for item in page.select(".Item"):
                 for val in item.select(".Message"):
                     if comment_in_profile(val.getText()):
-
-
+                    urlVal = extract_complete_comment_url(item)
     except Exception as exp:
         print (exp)
 
@@ -138,4 +137,6 @@ def comment_in_profile(dig):
     s = dig.lower()
     return 'accepted' in s or 'rejected' in s or 'decision' in s or '!' in s
 
-def extract_complete_comment
+def extract_complete_comment_url(item):
+    s= str(item).partition('a href="')[2].partition('"')[0]
+    print(s)
