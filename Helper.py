@@ -116,24 +116,31 @@ def get_stats_from_profile(username):
             samlcode = parse_to_get_saml.find('input', attrs={'name': 'SAMLResponse'})['value']
             SAML['SAMLResponse']=samlcode
             saml_post=s.post("https://talk.collegeconfidential.com/entry/connect/saml", data=SAML, headers=headers)
-            all_comments=s.get(url)
-            page = bs4.BeautifulSoup(all_comments.text, 'lxml')
-            if pages == None:
-                # results = page.find_all('div', attrs={"class": "Profile-Stats"})
-                for a in page.select('.Profile-Stats a'):
-                    if a['href'] == ("/profile/comments/" + username):
-                        nu = a.find('span', attrs={"class": "Count"})
-                        total_com = int(nu.text)
-                        pages=range(2, len(range(0,total_com, 20)))
-                        break
-            for item in page.select(".Item"):
-                for val in item.select(".Message"):
-                    # if comment_in_profile(val.getText()):
-                    comment_url = extract_complete_comment_url(item)
-                    comment = get_specific_comment(comment_url)
-
+            while True:
+                all_comments=s.get(url)
+                page = bs4.BeautifulSoup(all_comments.text, 'lxml')
+                if pages == None:
+                    for a in page.select('.Profile-Stats a'):
+                        if a['href'] == ("/profile/comments/" + username):
+                            nu = a.find('span', attrs={"class": "Count"})
+                            total_com = int(nu.text)
+                            pages=range(2, len(range(0,total_com, 20)))
+                            break
+                for item in page.select(".Item"):
+                    for val in item.select(".Message"):
+                        if comment_in_profile(val.getText()):
+                            comment_url = extract_complete_comment_url(item)
+                            comment = get_specific_comment(comment_url)
+                            if comment != None:
+                                if is_stats(comment.getText()):
+                                    return {'comment': comment, 'url': url}
+                if len(pages) == 0:
+                    return
+                else:
+                    url = "https://talk.collegeconfidential.com/profile/comments/{}?page=p{}".format(username,pages.pop(0))
     except Exception as exp:
-        print (exp)
+        return None
+
 
 def comment_in_profile(dig):
     s = dig.lower()
