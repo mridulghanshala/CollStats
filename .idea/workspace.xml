@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a8d716e7-c608-4a01-8268-46a39b209626" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parse.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parse.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,11 +12,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+            <state relative-caret-position="366">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../SneakerBot/venv/lib/python3.7/site-packages/flask/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="1934" selection-start-line="1934" selection-end-line="1934" />
             </state>
           </provider>
         </entry>
@@ -175,7 +183,7 @@
       <workItem from="1564704226839" duration="6184000" />
       <workItem from="1564864323118" duration="18409000" />
       <workItem from="1564942909075" duration="7659000" />
-      <workItem from="1564952708091" duration="5595000" />
+      <workItem from="1564952708091" duration="5913000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1564622351631</created>
@@ -296,11 +304,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564957259144</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fixed error">
+      <created>1564958848416</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1564958848416</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42366000" />
+    <option name="totallyTimeSpent" value="42684000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -313,7 +328,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="811" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2746781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -321,7 +335,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.12656467" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.32823366" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.9207232" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
@@ -385,7 +399,8 @@
     <MESSAGE value="search_all complete" />
     <MESSAGE value="parsing the resulting html" />
     <MESSAGE value="Added html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added html" />
+    <MESSAGE value="fixed error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -394,6 +409,11 @@
           <url>file://$PROJECT_DIR$/app.py</url>
           <line>23</line>
           <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="94" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -500,13 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../SneakerBot/venv/lib/python3.7/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="1934" selection-start-line="1934" selection-end-line="1934" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -526,8 +539,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+        <state relative-caret-position="366">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../SneakerBot/venv/lib/python3.7/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="1934" selection-start-line="1934" selection-end-line="1934" />
         </state>
       </provider>
     </entry>
