@@ -7,6 +7,9 @@ import Searching
 import config
 
 def grabSite(url):
+    for i in range(3):
+        Searching.SEARCH_COUNT[Searching.THREADS[-1]] += 1
+        print(url)
     try:
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
         return requests.get(url, timeout=7, headers=headers)
