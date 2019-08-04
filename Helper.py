@@ -52,7 +52,7 @@ def get_page_count(url):
     except:
         return 2
 
-def get_yearly_threads(url):
+def get_all_uni_threads(url):
     threads = []
     res = grabSite(url)
     page = bs4.BeautifulSoup(res.text, 'lxml')
@@ -118,12 +118,24 @@ def get_stats_from_profile(username):
             saml_post=s.post("https://talk.collegeconfidential.com/entry/connect/saml", data=SAML, headers=headers)
             all_comments=s.get(url)
             page = bs4.BeautifulSoup(all_comments.text, 'lxml')
+            if pages == None:
+                # results = page.find_all('div', attrs={"class": "Profile-Stats"})
+                for a in page.select('.Profile-Stats a'):
+                    if a['href'] == ("/profile/comments/" + username):
+                        nu = a.find('span', attrs={"class": "Count"})
+                        total_com = int(nu.text)
+                        pages=range(2, len(range(0,total_com, 20)))
+                        break
+            for item in page.select(".Item"):
+                for val in item.select(".Message"):
+                    if comment_in_profile(val.getText()):
+
+
     except Exception as exp:
         print (exp)
-    if pages == None:
-        # results = page.find_all('div', attrs={"class": "Profile-Stats"})
-        for a in page.select('.Profile-Stats a'):
-            if a['href']==("/profile/comments/"+username):
-                nu=a.find('span',attrs={"class":"Count"})
-                pages=int(nu.text)
-                break
+
+def comment_in_profile(dig):
+    s = dig.lower()
+    return 'accepted' in s or 'rejected' in s or 'decision' in s or '!' in s
+
+def extract_complete_comment

@@ -21,7 +21,7 @@ class Search(object):
         print(self.pages)
         self.all_threads = []
         for i in range(1, 15):
-            for v in Helper.get_yearly_threads(self.main_url + "//p{}".format(i)):
+            for v in Helper.get_all_uni_threads(self.main_url + "//p{}".format(i)):
                 self.all_threads.append(v)
                 Helper.extract_from_thread_url(self.thread_name,self.all_threads[0])
        # threads = [threading.Thread(target=Helper.extract_from_thread_url, args=(self.thread, ar,)) for ar in self.all_threads]

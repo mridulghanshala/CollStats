@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8d716e7-c608-4a01-8268-46a39b209626" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Searching.py" beforeDir="false" afterPath="$PROJECT_DIR$/Searching.py" afterDir="false" />
@@ -28,10 +27,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
+        <entry file="file://$PROJECT_DIR$/../SneakerBot/venv/lib/python3.7/site-packages/flask/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            <state relative-caret-position="36045">
+              <caret line="2462" selection-start-line="2462" selection-end-line="2462" />
             </state>
           </provider>
         </entry>
@@ -39,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Searching.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="345">
+              <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -51,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="603">
+              <caret line="122" column="57" lean-forward="true" selection-start-line="122" selection-start-column="57" selection-end-line="122" selection-end-column="57" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -103,6 +102,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -114,7 +114,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -169,7 +168,8 @@
       <workItem from="1564618875133" duration="648000" />
       <workItem from="1564620095438" duration="2632000" />
       <workItem from="1564704226839" duration="6184000" />
-      <workItem from="1564864323118" duration="14231000" />
+      <workItem from="1564864323118" duration="18409000" />
+      <workItem from="1564942909075" duration="935000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1564622351631</created>
@@ -206,11 +206,25 @@
       <option name="project" value="LOCAL" />
       <updated>1564868980396</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Login functionality">
+      <created>1564883639488</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1564883639488</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Get profile number of comments to get no of pages">
+      <created>1564890951622</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1564890951622</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24934000" />
+    <option name="totallyTimeSpent" value="30047000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -223,14 +237,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27110156" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.48433736" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.6457831" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4361446" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
@@ -256,7 +271,9 @@
     <MESSAGE value="Going to scrape individual threads" />
     <MESSAGE value="Individual thread scraping begins" />
     <MESSAGE value="Checking individual comments for the required fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking individual comments for the required fields" />
+    <MESSAGE value="Login functionality" />
+    <MESSAGE value="Get profile number of comments to get no of pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get profile number of comments to get no of pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -264,19 +281,14 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Searching.py</url>
           <line>25</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Helper.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="58" />
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/untitled$untitled.coverage" NAME="untitled Coverage Results" MODIFIED="1564622082511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CollStats$untitled.coverage" NAME="untitled Coverage Results" MODIFIED="1564883457607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CollStats$untitled.coverage" NAME="untitled Coverage Results" MODIFIED="1564890861008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/werkzeug/serving.py">
@@ -328,10 +340,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../SneakerBot/venv/lib/python3.7/site-packages/flask/app.py">
+    <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="2447" selection-start-line="2447" selection-end-line="2447" />
+        <state relative-caret-position="45">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -345,17 +357,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
+    <entry file="file://$PROJECT_DIR$/../SneakerBot/venv/lib/python3.7/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        <state relative-caret-position="36045">
+          <caret line="2462" selection-start-line="2462" selection-end-line="2462" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Searching.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="345">
+          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -364,8 +376,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="603">
+          <caret line="122" column="57" lean-forward="true" selection-start-line="122" selection-start-column="57" selection-end-line="122" selection-end-column="57" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
