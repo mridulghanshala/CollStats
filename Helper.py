@@ -4,6 +4,8 @@ import lxml
 import threading
 import json
 import Searching
+import config
+import time
 def grabSite(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
@@ -13,8 +15,36 @@ def grabSite(url):
         pass
     return "<html></html>"
 
+def grabSiteLogin(url):
+    try:
+
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+        post_params = {
+            "login": str(config.keys['login']),
+            "pass": str(config.keys['pass']),
+            "source":"database"
+        }
+        post2={}
+        with requests.Session() as s:
+            getAuth=s.get(url,headers=headers)
+            soup=bs4.BeautifulSoup(getAuth.content,'lxml')
+            dalla = soup.find('input', attrs={'name': 'AuthState'})['value']
+            myurl="https://auth.collegeconfidential.com/module.php/hobsonsregister/login.php?{}".format(dalla)
+            post_params['AuthState']=str(dalla)
+            p = s.post(myurl, data=post_params, headers=headers)
+            bs2 = bs4.BeautifulSoup(p.content,'lxml')
+            dal = bs2.find('input', attrs={'name': 'SAMLResponse'})['value']
+            post2['SAMLResponse']=dal
+            x=s.post("https://talk.collegeconfidential.com/entry/connect/saml", data=post2, headers=headers)
+            g=s.get(url)
+            print("hey")
+    except Exception as exp:
+        print (exp)
+        pass
+    return "<html></html>"
+
 def subthread_url(url, num):
-	return url.partition(".html")[0] + "-p{}.html".format(num)
+    return url.partition(".html")[0] + "-p{}.html".format(num)
 
 def get_page_count(url):
     res = grabSite(url)
@@ -53,13 +83,11 @@ def extract_from_thread_url(threadName, url):
                 # pass
                 elif 'rejected' in str(comment.getText()).lower() or 'rejection' in str(comment.getText()).lower():
                     typeVal = "rejected"
-                # pass
                 else:
                     typeVal = "unknown"
-                # pass
                 Searching.DB[threadName][typeVal].append({'urls': [url], 'type': "direct", "comment": str(thread)})
-            elif 'accepted' in str(comment.getText()).lower().split(" ")[:5] or 'rejected' in str(comment.getText()).lower().split(" ")[:5]:
-                fullComment = get_stats_from_profile(username)
+
+
 
 def is_stats(string):
     if 'gpa' in string.lower() and (string.count(":") > 2 or string.count("-") > 2):
@@ -67,3 +95,11 @@ def is_stats(string):
     return False
 
 def get_stats_from_profile(username):
+    url="https://talk.collegeconfidential.com/profile/comments/{}".format(username)
+    comments = []
+    pages = None
+    res = grabSite(url)
+    page = bs4.BeautifulSoup(res.text, 'lxml')
+    if pages == None:
+        results = int(page.find_all('div', attrs={"class": "Count"}))
+        print(results)
