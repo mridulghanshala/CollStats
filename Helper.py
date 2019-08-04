@@ -128,8 +128,10 @@ def get_stats_from_profile(username):
                         break
             for item in page.select(".Item"):
                 for val in item.select(".Message"):
-                    if comment_in_profile(val.getText()):
-                    urlVal = extract_complete_comment_url(item)
+                    # if comment_in_profile(val.getText()):
+                    comment_url = extract_complete_comment_url(item)
+                    comment = get_specific_comment(comment_url)
+
     except Exception as exp:
         print (exp)
 
@@ -139,4 +141,12 @@ def comment_in_profile(dig):
 
 def extract_complete_comment_url(item):
     s= str(item).partition('a href="')[2].partition('"')[0]
-    print(s)
+    return s
+
+def get_specific_comment(url):
+    commentID = url.partition("#")[2]
+    text=grabSite(url)
+    page = bs4.BeautifulSoup(text.text, 'lxml')
+    for val in page.select(".Role_RegisteredUser"):
+        if val['id']==commentID:
+            return val
