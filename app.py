@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, Markup, jsonify, make_response, send_from_directory, session
-import Searching
-app = Flask(__name__)
+import Searching,Parse
+app = Flask(__name__, static_url_path='/static')
 
 
 @app.route('/', defaults={'path': ''})
@@ -13,8 +13,10 @@ def catch_complete(path):
     if len(path) < 5:
         return path + " is an invalid school name"
     thread = "https://talk.collegeconfidential.com/" + path
-    countVal = Searching.search_all(thread, typeVal)
-
+    database,countVal = Searching.search_all(thread, typeVal)
+    for keyName in database.keys():
+        for i, val in enumerate(database[keyName]):
+            database[keyName][i] = Parse.parse_html(val)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
