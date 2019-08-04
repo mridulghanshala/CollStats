@@ -1,8 +1,5 @@
 import requests
 import bs4
-import lxml
-import threading
-import json
 import Searching
 import config
 

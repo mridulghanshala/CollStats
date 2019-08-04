@@ -1,8 +1,4 @@
 import Helper
-import json
-import requests
-import bs4
-import lxml
 import threading
 import json
 DB = json.load(open("db.json"))

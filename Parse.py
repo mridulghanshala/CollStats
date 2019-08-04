@@ -1,5 +1,4 @@
 import bs4
-import Helper
 def parse_html(value):
     info = {}
     htmlString = value['comment']
