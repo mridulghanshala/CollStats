@@ -88,7 +88,7 @@ In the following result, you can see the process used to get this admission resu
 
 In other words, PasadenaSTCA posted their admission decision in some other thread and their stats in some other thread.
 
-##How exactly does this do this stat collection
+## How exactly does this do this stat collection
 We start by gathering all the threads on the main university pages(usually around 250).
 Then we crawl through the comments(20) in each thread(about 10 pages).
 If a user posts their decision and not their stats this program crawls through each poster's college confidential account to find stats that they've posted in other threads.
