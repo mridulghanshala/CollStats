@@ -2,7 +2,7 @@
   <img src="static/download.png" width="250"/>
 <h5 align="center">Flask Web App that provides user with statistics to evaluate their chance of getting into a university based on College Confidential comments</h5>
 </p>
-x
+
 
 ## Motivation
 As a university applicant the probability of our getting in is based on various factors such as gpa,SAT,ACT extra curriculars etc.
