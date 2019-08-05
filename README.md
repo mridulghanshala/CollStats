@@ -19,7 +19,7 @@ Students might also post stats in ohter threads/forums.
 For the love of Math:
 This means about 1500000 comments for 1 university.
 
-##How does this help
+## How does this help
 This program collects and categorizes College Confidential comments containing application stats and crawls College Confidential to find stats from users that post admission results and organizes them based on the University name into categories.
 
 ## How do I use this?
