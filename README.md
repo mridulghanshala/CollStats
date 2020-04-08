@@ -1,5 +1,3 @@
-<p align="center">
-  <img src="static/download.png" width="250"/>
 <h5 align="center">Flask Web App that provides user with statistics to evaluate their chance of getting into a university based on College Confidential comments</h5>
 </p>
 
