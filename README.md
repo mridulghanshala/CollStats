@@ -95,27 +95,6 @@ It turns out that doing this is computationally intensive.  For instance, pullin
 
 I have utilized multithreading however the speed also depends on various factors such as Internet Speed.
 
-## Some Use Cases
-
-<p align="center">
-  <img src="static/1.png"/>
-</p>
-
-<p align="center">
-  <img src="static/2.png"/>
-</p>
-
-
-
-<p align="center">
-  <img src="static/4.png"/>
-</p>
-
-
-
-<p align="center">
-  <img src="static/3.png"/>
-</p>
 
 
 
